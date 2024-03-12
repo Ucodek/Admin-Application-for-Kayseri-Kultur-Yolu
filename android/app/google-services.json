@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "706688685819",
+    "project_id": "kultur-yolu-test",
+    "storage_bucket": "kultur-yolu-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706688685819:android:bd25fdd1f8c43e2de4025e",
+        "android_client_info": {
+          "package_name": "com.example.admin_panel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJgCbV67DWB_EAZu8lG23O92vD4lL5G0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706688685819:android:f81c2bb115774608e4025e",
+        "android_client_info": {
+          "package_name": "com.example.deneme_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJgCbV67DWB_EAZu8lG23O92vD4lL5G0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706688685819:android:c0503f57e2e6efd9e4025e",
+        "android_client_info": {
+          "package_name": "com.example.first_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJgCbV67DWB_EAZu8lG23O92vD4lL5G0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
