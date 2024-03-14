@@ -3,7 +3,7 @@
 import 'package:deneme_1/firebase_options.dart';
 import 'package:deneme_1/src/Pages/HomePage.dart';
 import 'package:deneme_1/src/Pages/ListPage.dart';
-
+import 'package:deneme_1/src/data/tolgaTestPages/data-test-page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -30,41 +29,43 @@ class _MyAppState extends State<MyApp> {
       _selectedIndex = index;
     });
   }
-  
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-   
 // Create ThemeData instances
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark(),
-        home: Scaffold(
-          body: IndexedStack(
-            index: _selectedIndex,
-            children: [
-              ListPage(),
-              MyHomePage(null),
-            ],
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+      home: DataTestPage(),
+    );
+  }
+
+  Scaffold main(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          ListPage(),
+          DataTestPage(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'List',
+            backgroundColor: Theme.of(context).primaryColor,
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                label: 'List',
-                backgroundColor: Theme.of(context).primaryColor,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add),
-                label: 'Add',
-                backgroundColor: Theme.of(context).primaryColor,
-              ),
-              
-            ],
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Add',
+            backgroundColor: Theme.of(context).primaryColor,
           ),
-        ));
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    );
   }
 }

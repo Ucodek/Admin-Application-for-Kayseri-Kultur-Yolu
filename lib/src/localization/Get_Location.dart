@@ -2,6 +2,7 @@ import 'package:deneme_1/src/Pages/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+/*
 const LatLng currentLocation = LatLng(38.734802, 35.467987);
 
 class MapScreen extends StatefulWidget {
@@ -59,10 +60,11 @@ class _MapScreenState extends State<MapScreen> {
           onPressed: () {
             if (_selectedLocation != null) {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          MyHomePage(_selectedLocation = _selectedLocation)));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(_selectedLocation = _selectedLocation),
+                ),
+              );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("Lütfen bir konum seçin"),
@@ -75,3 +77,4 @@ class _MapScreenState extends State<MapScreen> {
         ));
   }
 }
+*/

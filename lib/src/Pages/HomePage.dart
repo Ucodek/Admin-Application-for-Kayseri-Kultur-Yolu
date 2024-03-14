@@ -1,9 +1,8 @@
 import 'dart:collection';
-
+/*
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deneme_1/src/localization/Get_Location.dart';
-import 'package:deneme_1/src/modals/LocationInfo.dart';
-import 'package:deneme_1/src/modals/Structures.dart';
+import 'package:deneme_1/src/modals/location-info-model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
@@ -271,3 +270,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+*/
