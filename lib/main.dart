@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:deneme_1/firebase_options.dart';
-import 'package:deneme_1/src/Pages/HomePage.dart';
 import 'package:deneme_1/src/Pages/ListPage.dart';
 import 'package:deneme_1/src/Pages/MainHub.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -41,6 +40,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  @deprecated
   Scaffold main(BuildContext context) {
     return Scaffold(
       body: IndexedStack(

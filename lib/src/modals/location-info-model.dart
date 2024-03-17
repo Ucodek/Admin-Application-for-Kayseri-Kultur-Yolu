@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, unnecessary_getters_setters
+import 'package:deneme_1/src/modals/IStorable.dart';
 import 'package:deneme_1/src/modals/styles/String.dart';
 
-
-class LocationInfoModel {
+class LocationInfoModel implements IStorable<LocationInfoModel> {
   double? _longitude;
   double? _latitude;
   double? _imageLongitude;

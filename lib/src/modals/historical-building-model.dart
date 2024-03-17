@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:deneme_1/src/modals/IStorable.dart';
 import 'package:deneme_1/src/modals/category-enum.dart';
 import 'package:deneme_1/src/modals/location-info-model.dart';
+import 'package:deneme_1/src/modals/styles/String.dart';
 
 class HistoricalBuildingModel implements IStorable<HistoricalBuildingModel> {
   String? _id;
@@ -79,46 +80,46 @@ class HistoricalBuildingModel implements IStorable<HistoricalBuildingModel> {
 
   //TODO: change it Map<String, dynamic>
   HistoricalBuildingModel.fromJson(Map<dynamic, dynamic> jsonData) {
-    _id = jsonData['id'].toString();
-    _name = jsonData['name'];
-    _text = jsonData['text'];
-    _architecturalFeats = jsonData['architecturalFeats'];
-    _oldImages = jsonData['oldImages'] != null
-        ? (jsonDecode(jsonData['oldImages']) as List?)
+    _id = jsonData[JsonDataTagNames.id].toString();
+    _name = jsonData[JsonDataTagNames.name];
+    _text = jsonData[JsonDataTagNames.text];
+    _architecturalFeats = jsonData[JsonDataTagNames.architecturalFeats];
+    _oldImages = jsonData[JsonDataTagNames.oldImages] != null
+        ? (jsonDecode(jsonData[JsonDataTagNames.oldImages]) as List?)
             ?.map((item) => item as String)
             .toList()
         : null;
-    _upToDateImages = jsonData['upToDateImages'] != null
-        ? (jsonDecode(jsonData['upToDateImages']) as List)
+    _upToDateImages = jsonData[JsonDataTagNames.upToDateImages] != null
+        ? (jsonDecode(jsonData[JsonDataTagNames.upToDateImages]) as List)
             .map((item) => item as String)
             .toList()
         : null;
-    _whatToDo = jsonData['whatToDo'];
-    _locationInfo = jsonData['locationInfo'] != null
+    _whatToDo = jsonData[JsonDataTagNames.whatToDo];
+    _locationInfo = jsonData[JsonDataTagNames.locationInfo] != null
         ? LocationInfoModel.fromJson(
-            (jsonDecode(jsonData['locationInfo']) as Map<String, dynamic>),
+            (jsonDecode(jsonData[JsonDataTagNames.locationInfo]) as Map<String, dynamic>),
           )
         : null;
-    _category = jsonData["category"] != null
-        ? getCategoryById(jsonDecode(jsonData["category"]))
+    _category = jsonData[JsonDataTagNames.category] != null
+        ? getCategoryById(jsonDecode(jsonData[JsonDataTagNames.category]))
         : null;
   }
 
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = _id;
-    data['name'] = _name;
-    data['text'] = _text;
-    data['architecturalFeats'] = _architecturalFeats;
-    data['oldImages'] = jsonEncode(_oldImages);
-    data['upToDateImages'] = jsonEncode(_upToDateImages);
-    data['whatToDo'] = _whatToDo;
+    data[JsonDataTagNames.id] = _id;
+    data[JsonDataTagNames.name] = _name;
+    data[JsonDataTagNames.text] = _text;
+    data[JsonDataTagNames.architecturalFeats] = _architecturalFeats;
+    data[JsonDataTagNames.oldImages] = jsonEncode(_oldImages);
+    data[JsonDataTagNames.upToDateImages] = jsonEncode(_upToDateImages);
+    data[JsonDataTagNames.whatToDo] = _whatToDo;
     if (_locationInfo != null) {
-      data['locationInfo'] = jsonEncode(_locationInfo!.toJson());
+      data[JsonDataTagNames.locationInfo] = jsonEncode(_locationInfo!.toJson());
     }
     if (_category != null) {
-      data["category"] = jsonEncode(_category!.id());
+      data[JsonDataTagNames.category] = jsonEncode(_category!.id());
     }
     return data;
   }

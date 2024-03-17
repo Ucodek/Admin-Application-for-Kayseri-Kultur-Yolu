@@ -1,4 +1,5 @@
 import 'package:deneme_1/src/data/DatabaseManagers/firebase/FirebaseManager.dart';
+import 'package:deneme_1/src/modals/category-enum.dart';
 import 'package:deneme_1/src/modals/historical-building-model.dart';
 import 'package:deneme_1/src/modals/location-info-model.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +18,10 @@ Widget saveItTR(
   return ElevatedButton(
       onPressed: () async {
         String id = idController.text;
-        String name = idController.text;
-        String architecturalFeats = idController.text;
-        String text = idController.text;
-        String whatToDo = idController.text;
+        String name = nameController.text;
+        String architecturalFeats = architecturalFeatsController.text;
+        String text = textController.text;
+        String whatToDo = whatToDoController.text;
         double modelLat = double.parse(modelLatController.text);
         double modelLong = double.parse(modelLongController.text);
         double photoLat = double.parse(photoLatController.text);
@@ -32,7 +33,14 @@ Widget saveItTR(
           architecturalFeats: architecturalFeats,
           text: text,
           whatToDo: whatToDo,
-          locationInfo: LocationInfoModel(latitude: modelLat, longitude: modelLong, imageLatitude: photoLat,imageLongitude: photoLong)
+          locationInfo: LocationInfoModel(
+              latitude: modelLat,
+              longitude: modelLong,
+              imageLatitude: photoLat,
+              imageLongitude: photoLong),
+          category: Categories.bathhouse,
+          oldImages: [],
+          upToDateImages: [],
         );
 
         await FirebaseManager.saveData(id, model);

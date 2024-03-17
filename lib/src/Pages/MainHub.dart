@@ -39,8 +39,6 @@ class _MainHub extends State<MainHub> {
     return await DataManager.getModels();
   }
 
-
-
   LatLng? modelLoc;
 
   LatLng? photoLoc;
@@ -96,42 +94,38 @@ class _MainHub extends State<MainHub> {
             actions: [
               ElevatedButton(
                   onPressed: () async {
-                    photoLoc =
-                        await DataManager.requestPhotoLocPinLatLng(context);
+                    photoLoc = await DataManager.requestPhotoLocPinLatLng(context);
                     if (photoLoc != null) {
                       _photoLatController.text = photoLoc!.latitude.toString();
-                      _photoLongController.text =
-                          photoLoc!.longitude.toString();
+                      _photoLongController.text = photoLoc!.longitude.toString();
                     }
                     setState(() {});
                     ScaffoldMessenger.of(context)
                       ..removeCurrentSnackBar()
-                      ..showSnackBar(
-                          SnackBar(content: Text('$modelLoc' + ' Eklendi')));
+                      ..showSnackBar(SnackBar(content: Text('$modelLoc' + ' Eklendi')));
                   },
                   child: Text("Resim konum")),
               ElevatedButton(
                   onPressed: () async {
-                    modelLoc =
-                        await DataManager.requestModelLocPinLatLng(context);
+                    modelLoc = await DataManager.requestModelLocPinLatLng(context);
                     if (modelLoc != null) {
                       _modelLatController.text = modelLoc!.latitude.toString();
-                      _modelLongController.text =
-                          modelLoc!.longitude.toString();
-                          setState(() {});
-                    ScaffoldMessenger.of(context)
-                      ..removeCurrentSnackBar()
-                      ..showSnackBar(
-                          SnackBar(content: Text('$photoLoc' + ' Eklendi')));
+                      _modelLongController.text = modelLoc!.longitude.toString();
+                      setState(() {});
+                      ScaffoldMessenger.of(context)
+                        ..removeCurrentSnackBar()
+                        ..showSnackBar(SnackBar(content: Text('$photoLoc' + ' Eklendi')));
                     }
-                    
                   },
                   child: Text("Pin konum")),
-                  ElevatedButton(onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> englishRecord()));
-                  },  child: Text("English"))
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => englishRecord()));
+                  },
+                  child: Text("English"))
             ],
-          ),  
+          ),
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -155,7 +149,6 @@ class _MainHub extends State<MainHub> {
                     ),
                   ],
                 ),
-                   
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: idController(_idController),
@@ -176,10 +169,18 @@ class _MainHub extends State<MainHub> {
                   padding: const EdgeInsets.all(4.0),
                   child: whatToDo(_whatToDoController),
                 ),
-                Padding(padding: EdgeInsets.all(8),
-                child: ElevatedButton(onPressed: () { saveItTR(_idController, _nameController, _architecturalFeatsController, _textController, _whatToDoController, _modelLatController, _modelLongController, _photoLatController, _photoLongController); },
-                child: Text("Save it")
-                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: saveItTR(
+                      _idController,
+                      _nameController,
+                      _architecturalFeatsController,
+                      _textController,
+                      _whatToDoController,
+                      _modelLatController,
+                      _modelLongController,
+                      _photoLatController,
+                      _photoLongController),
                 ),
               ],
             ),

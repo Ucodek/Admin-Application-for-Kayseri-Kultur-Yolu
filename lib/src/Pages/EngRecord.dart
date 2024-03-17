@@ -1,7 +1,4 @@
 import 'dart:async';
-
-import 'package:async_builder/async_builder.dart';
-import 'package:deneme_1/src/Pages/Parts/SaveButton.dart';
 import 'package:deneme_1/src/Pages/Parts/SaveButtonEng.dart';
 import 'package:deneme_1/src/Pages/Parts/_PhotoLongController.dart';
 import 'package:deneme_1/src/Pages/Parts/_modelLongController.dart';
@@ -39,8 +36,6 @@ class _englishRecordState extends State<englishRecord> {
     return await DataManager.getModels();
   }
 
-
-
   LatLng? modelLoc;
 
   LatLng? photoLoc;
@@ -57,98 +52,100 @@ class _englishRecordState extends State<englishRecord> {
   }
 
   Widget getContentWidget(int index) {
-      
-        return Scaffold(
-          appBar: AppBar(
-            actions: [
-              ElevatedButton(
-                  onPressed: () async {
-                    photoLoc =
-                        await DataManager.requestPhotoLocPinLatLng(context);
-                    if (photoLoc != null) {
-                      _photoLatController.text = photoLoc!.latitude.toString();
-                      _photoLongController.text =
-                          photoLoc!.longitude.toString();
-                    }
-                    setState(() {});
-                    ScaffoldMessenger.of(context)
-                      ..removeCurrentSnackBar()
-                      ..showSnackBar(
-                          SnackBar(content: Text('$modelLoc' + ' Eklendi')));
-                  },
-                  child: Text("Resim Pin konum ekleme")),
-              ElevatedButton(
-                  onPressed: () async {
-                    modelLoc =
-                        await DataManager.requestModelLocPinLatLng(context);
-                    if (modelLoc != null) {
-                      _modelLatController.text = modelLoc!.latitude.toString();
-                      _modelLongController.text =
-                          modelLoc!.longitude.toString();
-                          setState(() {});
-                    ScaffoldMessenger.of(context)
-                      ..removeCurrentSnackBar()
-                      ..showSnackBar(
-                          SnackBar(content: Text('$photoLoc' + ' Eklendi')));
-                    }
-                    
-                  },
-                  child: Text("Pin konum")),
-                  
-            ],
-          ),
-          body: SingleChildScrollView(
-            child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          ElevatedButton(
+              onPressed: () async {
+                photoLoc = await DataManager.requestPhotoLocPinLatLng(context);
+                if (photoLoc != null) {
+                  _photoLatController.text = photoLoc!.latitude.toString();
+                  _photoLongController.text = photoLoc!.longitude.toString();
+                }
+                setState(() {});
+                ScaffoldMessenger.of(context)
+                  ..removeCurrentSnackBar()
+                  ..showSnackBar(SnackBar(content: Text('$modelLoc' + ' Eklendi')));
+              },
+              child: Text("Resim Pin konum ekleme")),
+          ElevatedButton(
+              onPressed: () async {
+                modelLoc = await DataManager.requestModelLocPinLatLng(context);
+                if (modelLoc != null) {
+                  _modelLatController.text = modelLoc!.latitude.toString();
+                  _modelLongController.text = modelLoc!.longitude.toString();
+                  setState(() {});
+                  ScaffoldMessenger.of(context)
+                    ..removeCurrentSnackBar()
+                    ..showSnackBar(SnackBar(content: Text('$photoLoc' + ' Eklendi')));
+                }
+              },
+              child: Text("Pin konum")),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    photoLatController(_photoLatController),
-                    modelLatController(_modelLatController),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: photoLongController(_photoLongController),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: ModelLongController(_modelLongController),
-                    ),
-                  ],
-                ),
-                   
+                photoLatController(_photoLatController),
+                modelLatController(_modelLatController),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: idController(_idController),
+                  child: photoLongController(_photoLongController),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: nameController(_nameController),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: archfeatsController(_architecturalFeatsController),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: textController(_textController),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: whatToDo(_whatToDoController),
-                ),
-                Padding(padding: EdgeInsets.all(8),
-                child: ElevatedButton(onPressed: () { saveItEng(_idController, _nameController, _architecturalFeatsController, _textController, _whatToDoController, _modelLatController, _modelLongController, _photoLatController, _photoLongController); },
-                child: Text("Save it")
-                ),
+                  child: ModelLongController(_modelLongController),
                 ),
               ],
             ),
-          ),
-        );
-    }
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: idController(_idController),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: nameController(_nameController),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: archfeatsController(_architecturalFeatsController),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: textController(_textController),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: whatToDo(_whatToDoController),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: ElevatedButton(
+                  onPressed: () {
+                    saveItEng(
+                        _idController,
+                        _nameController,
+                        _architecturalFeatsController,
+                        _textController,
+                        _whatToDoController,
+                        _modelLatController,
+                        _modelLongController,
+                        _photoLatController,
+                        _photoLongController);
+                  },
+                  child: Text("Save it")),
+            ),
+          ],
+        ),
+      ),
+    );
   }
+}

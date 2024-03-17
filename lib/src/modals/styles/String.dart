@@ -1,5 +1,3 @@
-bool isEnglish = true;
-
 class JsonDataTagNames {
   //HistoricalBuildingModel
   static const String id = "id";

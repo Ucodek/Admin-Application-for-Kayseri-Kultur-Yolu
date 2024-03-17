@@ -6,18 +6,14 @@ import 'package:deneme_1/src/modals/historical-building-model.dart';
 class FirebaseManager {
   final int _version = 1;
   int get version => _version;
-  static const String _tableNameTR = "HistoricalBuildings_tr";
- 
+  static const String _tableName = "HistoricalBuildings_tr";
 
   static final CollectionReference _reference =
-      FirebaseFirestore.instance.collection(_tableNameTR);
-
-    
+      FirebaseFirestore.instance.collection(_tableName);
 
   static final CollectionReference _configReference =
       FirebaseFirestore.instance.collection("Config");
 
-  
   static Future<bool> deleteAll() async {
     QuerySnapshot querySnapshot = await _reference.get();
     // ignore: avoid_function_literals_in_foreach_calls
@@ -85,17 +81,23 @@ class FirebaseManager {
       return null;
     }
   }
+
   static Future<void> saveData(String id, HistoricalBuildingModel model) async {
-    final docRef = FirebaseFirestore.instance
-        .collection('HistoricalBuildings_tr')
-        .doc(id);
-    final data =  model.toJson();
+    final docRef = FirebaseFirestore.instance.collection(_tableName).doc(id);
+    final data = model.toJson();
 
     await docRef.set(data);
+    await increaseVersionNum();
   }
 
+  static Future<void> increaseVersionNum() async {
+    var version = await getVersion();
+    if (version != null) {
+      await updateVersion(version + .001);
+    }
+  }
 }
- 
+
 class FirebaseException implements Exception {
   String message;
   FirebaseException({required this.message});

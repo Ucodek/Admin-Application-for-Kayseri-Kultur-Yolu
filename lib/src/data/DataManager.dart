@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:deneme_1/src/data/DatabaseManagers/firebase/FirebaseManager.dart';
-import 'package:deneme_1/src/data/tolgaTestPages/model_loc_picker.dart';
 import 'package:deneme_1/src/modals/historical-building-model.dart';
-import 'package:deneme_1/src/data/tolgaTestPages/photo_loc_picker.dart';
+import 'package:deneme_1/src/widgets/model_loc_picker.dart';
+import 'package:deneme_1/src/widgets/photo_loc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 
