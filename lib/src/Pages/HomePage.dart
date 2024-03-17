@@ -1,3 +1,4 @@
+/*
 import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,7 +7,7 @@ import 'package:deneme_1/src/modals/location-info-model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
-/*
+
 class MyHomePage extends StatefulWidget {
   final LatLng? selectedLocation;
   const MyHomePage(LatLng? this.selectedLocation, {super.key});
@@ -270,4 +271,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
 */

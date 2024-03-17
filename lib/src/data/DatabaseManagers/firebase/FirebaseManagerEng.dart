@@ -1,25 +1,18 @@
-// ignore_for_file: file_names
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deneme_1/src/modals/historical-building-model.dart';
+import 'package:flutter/material.dart';
 
-class FirebaseManager {
-  final int _version = 1;
-  int get version => _version;
-  static const String _tableNameTR = "HistoricalBuildings_tr";
- 
+class FirebaseManagerEng{
+   static const String _tableNameEng = "HistoricalBuildings_en";
 
-  static final CollectionReference _reference =
-      FirebaseFirestore.instance.collection(_tableNameTR);
+  static final CollectionReference _referenceEng =
+      FirebaseFirestore.instance.collection(_tableNameEng);
 
-    
-
-  static final CollectionReference _configReference =
+       static final CollectionReference _configReference =
       FirebaseFirestore.instance.collection("Config");
 
-  
-  static Future<bool> deleteAll() async {
-    QuerySnapshot querySnapshot = await _reference.get();
+static Future<bool> deleteAll() async {
+    QuerySnapshot querySnapshot = await _referenceEng.get();
     // ignore: avoid_function_literals_in_foreach_calls
     querySnapshot.docs.forEach((document) async {
       await document.reference.delete();
@@ -30,7 +23,7 @@ class FirebaseManager {
 
   static Future<HistoricalBuildingModel> get(String modelId) async {
     HistoricalBuildingModel building = HistoricalBuildingModel();
-    await _reference.doc(modelId.toString()).get().then(
+    await _referenceEng.doc(modelId.toString()).get().then(
       (DocumentSnapshot snapshot) {
         building =
             HistoricalBuildingModel.fromJson(snapshot.data() as Map<String, dynamic>);
@@ -40,13 +33,14 @@ class FirebaseManager {
   }
 
   static Future<String> update(String id, HistoricalBuildingModel model) async {
-    await _reference.doc(id.toString()).set(model.toJson());
+    await _referenceEng.doc(id.toString()).set(model.toJson());
     return id;
   }
 
-  static Future<List<HistoricalBuildingModel>> getAll() async {
+
+static Future<List<HistoricalBuildingModel>> getAll() async {
     List<HistoricalBuildingModel> buildings = [];
-    await _reference.get().then(
+    await _referenceEng.get().then(
       (QuerySnapshot querySnapshot) {
         buildings = querySnapshot.docs
             .map(
@@ -57,14 +51,14 @@ class FirebaseManager {
     return buildings;
   }
 
-  static Future<String> insert(HistoricalBuildingModel model) async {
+ static Future<String> insert(HistoricalBuildingModel model) async {
     if (model.id == null) return "Error: Please enter ID number of model.";
-    _reference.doc(model.id!.toString()).set(model.toJson());
+    _referenceEng.doc(model.id!.toString()).set(model.toJson());
     return model.id!;
   }
 
-  Future<String> delete(String id) async {
-    await _reference.doc(id.toString()).delete();
+   Future<String> delete(String id) async {
+    await _referenceEng.doc(id.toString()).delete();
     return id;
   }
 
@@ -85,17 +79,11 @@ class FirebaseManager {
       return null;
     }
   }
-  static Future<void> saveData(String id, HistoricalBuildingModel model) async {
-    final docRef = FirebaseFirestore.instance
-        .collection('HistoricalBuildings_tr')
-        .doc(id);
-    final data =  model.toJson();
 
-    await docRef.set(data);
-  }
+
 
 }
- 
+
 class FirebaseException implements Exception {
   String message;
   FirebaseException({required this.message});

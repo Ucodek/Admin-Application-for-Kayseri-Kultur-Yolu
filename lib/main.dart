@@ -3,7 +3,7 @@
 import 'package:deneme_1/firebase_options.dart';
 import 'package:deneme_1/src/Pages/HomePage.dart';
 import 'package:deneme_1/src/Pages/ListPage.dart';
-import 'package:deneme_1/src/data/tolgaTestPages/data-test-page.dart';
+import 'package:deneme_1/src/Pages/MainHub.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: DataTestPage(),
+      home: MainHub(),
     );
   }
 
@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
         index: _selectedIndex,
         children: [
           ListPage(),
-          DataTestPage(),
+          MainHub(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

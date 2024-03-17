@@ -1,9 +1,10 @@
 import 'package:deneme_1/src/data/DatabaseManagers/firebase/FirebaseManager.dart';
+import 'package:deneme_1/src/data/DatabaseManagers/firebase/FirebaseManagerEng.dart';
 import 'package:deneme_1/src/modals/historical-building-model.dart';
 import 'package:deneme_1/src/modals/location-info-model.dart';
 import 'package:flutter/material.dart';
 
-Widget saveItTR(
+Widget saveItEng(
   TextEditingController idController,
   TextEditingController nameController,
   TextEditingController architecturalFeatsController,
@@ -21,10 +22,10 @@ Widget saveItTR(
         String architecturalFeats = idController.text;
         String text = idController.text;
         String whatToDo = idController.text;
-        double modelLat = double.parse(modelLatController.text);
-        double modelLong = double.parse(modelLongController.text);
-        double photoLat = double.parse(photoLatController.text);
-        double photoLong = double.parse(photoLongController.text);
+        double modelLat = double.parse(modelLatController.text.trim());
+        double modelLong = double.parse(modelLongController.text.trim());
+        double photoLat = double.parse(photoLatController.text.trim());
+        double photoLong = double.parse(photoLongController.text.trim());
 
         HistoricalBuildingModel model = HistoricalBuildingModel(
           id: id,
@@ -35,7 +36,7 @@ Widget saveItTR(
           locationInfo: LocationInfoModel(latitude: modelLat, longitude: modelLong, imageLatitude: photoLat,imageLongitude: photoLong)
         );
 
-        await FirebaseManager.saveData(id, model);
+        await FirebaseManagerEng.update(id, model);
       },
       child: Text("Save Data"));
 }
